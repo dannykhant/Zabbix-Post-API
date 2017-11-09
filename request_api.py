@@ -6,7 +6,7 @@ class RequestAPI(object):
 		self.sess = requests.Session()
 		self.sess.headers.update({'content-type': 'application/json-rpc'})
 
-		self.url = u'http://127.0.0.1/zabbix/api_jsonrpc.php'
+		self.url = u'http://10.11.95.68/zabbix/api_jsonrpc.php'
 		self.data = json.dumps({"jsonrpc": "2.0", "method": "user.login", "params": {"user": "Admin","password": "zabbix"},"id": 1,"auth": None})
 
 

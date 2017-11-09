@@ -4,7 +4,7 @@ import json
 
 class Converter(object):
 	
-	server.socket_host = '10.11.95.68'
+	server.socket_host = '10.10.130.224'
 	methods = {'host.get', 'trend.get', 'trigger.get'}
 
 	@expose
@@ -14,22 +14,21 @@ class Converter(object):
 	@expose
 	@tools.json_in()
 	@tools.json_out()
-	def request(self, method, output, **kwargs):
+	def request(self, method, **kwargs):
 		if method in self.methods:
 			req = RequestAPI()
 
-			if type(output) is not list:
-				output = [output]
-			
-			if method == 'trend.get':
-				params = {"output": output, "time_from":kwargs['timefrom'], "time_till":kwargs['timetill'], "limit": 10}
-			elif method == 'host.get':
-				params = {"output": output, "groupids": kwargs['groupids'], "limit": 10}  
+			if method == 'host.get':
+				req_id = 'hostid'
+			elif method == 'trend.get':
+                                req_id = 'itemid'
 			elif method == 'trigger.get':
-				params = {"output": output, "groupids": kwargs['groupids'], "limit": 10}
-			
+                                req_id = 'triggerid'
 
-			res = req.post_rest(method, params)
+			if type(kwargs['output']) is not list:
+				kwargs['output'] = [req_id, kwargs['output']]
+
+			res = req.post_rest(method, kwargs)
 			return res
 		else:
 			return "Error..."
