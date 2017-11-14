@@ -1,0 +1,5 @@
+##Zabbix Post API
+
+Zabbix supports RESTFUL API to interact. But it needs to post JSON to get something back. Here, this is for posting data without JSON format.
+
+Depends on cherrypy and requests.
