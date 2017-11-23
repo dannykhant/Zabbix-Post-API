@@ -36,5 +36,3 @@ class RequestAPI(object):
 
 		return resp.text
 
-
-session = RequestAPI()
