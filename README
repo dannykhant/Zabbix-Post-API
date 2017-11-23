@@ -2,4 +2,12 @@
 
 Zabbix supports RESTFUL API to interact. But it needs to post JSON to get something back. Here, this is for posting data without JSON format.
 
-Depends on cherrypy and requests.
+Depends on <cherrypy> and <requests>.
+
+# Call API:
+
+curl http://127.0.0.1:8080/request?method=trend.get\&output=value_min\&output=value_max\&time_from=1504828800\&time_till=1505056500\&limit=10
+
+# Run with:
+
+python cherryzapi.py 

@@ -4,7 +4,7 @@ from request_api import RequestAPI
 class Converter(object):
 	
 	# Cherrypy listening IP
-	server.socket_host = '10.10.130.224'
+	server.socket_host = '127.0.0.1'
 
 	# Supported methods
 	methods = {'host.get', 'trend.get', 'trigger.get'}
